@@ -1,6 +1,6 @@
 # Stewart, Alberto, Mohamed 2022 EDA Project
 
-## COVID-19's impact on adolescent mental health
+## COVID-19's impact on teens and young adult's mental health
 
 by Francesca Stewart, Alethea Alberto, Asma Mohamed
 
