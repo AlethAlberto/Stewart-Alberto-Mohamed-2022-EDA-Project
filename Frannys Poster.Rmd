@@ -6,7 +6,7 @@ output: github_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# COVID-19's impact on adolescent mental health
+# COVID-19's Impact on Adults Mental Health
 
 Francesca Stewart, Alethea Alberto, Asma Mohamed
 
