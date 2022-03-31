@@ -3,7 +3,7 @@ library(tidyverse)
 # MDE data ----------------------------------------------------------------
 
 # 2020
-load("data/NSDUH_2020.Rdata")               # read 2020 data
+load("data/NSDUH_2020.Rdata")              # read 2020 data
 nsduh_2020 <- as_tibble(NSDUH_2020)         # turn it into a tibble
 amdeyr_2020 <-                              # get MDE as a percent
   nsduh_2020 %>% 
@@ -18,9 +18,9 @@ amdeyr_2020 <-                              # get MDE as a percent
 
 # 2019
 load("data/NSDUH_2019.Rdata")               # read 2019 data
-nsduh_2019 <- as_tibble(NSDUH_2020)         # turn it into a tibble
+nsduh_2019 <- as_tibble(nsduh_2019)         # turn it into a tibble
 amdeyr_2019 <-                              # get MDE as a percent
-  nsduh_2020 %>% 
+  nsduh_2019 %>% 
   filter(AGE2 >= 7, !is.na(amdeyr)) %>% 
   select(amdeyr) %>% 
   count(amdeyr) %>% 
@@ -30,7 +30,13 @@ amdeyr_2019 <-                              # get MDE as a percent
   ) %>% 
   print()
 
+
+
+
 bind_rows(
   amdeyr_2020,
   amdeyr_2019
 )
+
+plot(amdeyr_2020)
+
