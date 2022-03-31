@@ -13,3 +13,9 @@ Mental health is very important to a persons overall health and well-being. Ment
 We are interested in how the COVID-19 pandemic has affected children's overall mental health and well-being. To address this topic, we will explore data from KIDS COUNT®, a project of the Annie E. Casey Foundation which surveys children and families annually across the United States. We will look for relationships between risk factors, such as social distancing and stay-at-home orders, and mental health outcomes.
 
 Our results may help us understand the effect of COVID-19 on children's mental health in the US, and suggest ways to improve public health responses in the future.
+
+### Data
+
+1. go to https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2020-nsduh-2020-ds0001 
+2. select year
+3. under download datasets, click r, and the download
