@@ -11,32 +11,31 @@ amdeyr_2020 <-                              # get MDE as a percent
   select(amdeyr) %>% 
   count(amdeyr) %>% 
   mutate(
-    amdeyr_per = amdeyr / sum(amdeyr),
+    p = n / sum(n),
     year = 2020
   ) %>% 
   print()
 
+
 # 2019
-load("data/NSDUH_2019.Rdata")               # read 2019 data
-nsduh_2019 <- as_tibble(nsduh_2019)         # turn it into a tibble
+load("data/NSDUH_2019.RData")               # read 2019 data
+nsduh_2019 <- as_tibble(PUF2019_100920)         # turn it into a tibble
+nsduh_2019
 amdeyr_2019 <-                              # get MDE as a percent
   nsduh_2019 %>% 
   filter(AGE2 >= 7, !is.na(amdeyr)) %>% 
   select(amdeyr) %>% 
   count(amdeyr) %>% 
   mutate(
-    amdeyr_per = amdeyr / sum(amdeyr),
+    p = n / sum(n),
     year = 2019
   ) %>% 
   print()
 
-
-
-
-bind_rows(
-  amdeyr_2020,
-  amdeyr_2019
+write_csv(
+  x = amdeyr_2019,
+  file = "data/amdeyr_2019.csv",
+  col_names = TRUE
 )
 
-plot(amdeyr_2020)
 
