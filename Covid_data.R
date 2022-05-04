@@ -84,7 +84,7 @@ df18= data.frame(Subgroups,Percent, Period)
 
 Percent= c(43.4,32.2,29.9,26.7,21.5,17.2,18.2)
 Period=("Nov11-Nov23,2020")
-df19= data.frame(Subgroups,Percent, Period)
+df19= data.frame(Subgroups,Percent,Period)
 
 Percent= c(42.1,33.4,30.5,28.0,21.7,17.2,14.4)
 Period=("Nov25-Dec7,2020")
@@ -92,9 +92,13 @@ df20= data.frame(Subgroups,Percent, Period)
 
 Percent= c(43.6,34.9,31.5,28.9,22.5,18.4,21.7)
 Period=("Dec9-Dec21,2020")
-df21= data.frame(Subgroups,Percent, Period)
+df21= data.frame(Subgroups,Percent)
 
-
+Period= c("Apr23-May5,2020","May7-May12,2020","May21-May26,2020","May28-Jun2,2020",
+           "Jun4-Jun9,2020","Jun11-Jun16,2020","Jun18-Jun23,2020","Jun25-Jun30,2020","Jul2-Jul7,2020",
+           "Jul9-Jul14,2020","Jul16-Jul21,2020","Aug19-Aug31,2020","Sep2-Sep14,2020","Sep16-Sep28,2020",
+           "Sep30-Oct12,2020","Oct14-Oct26,2020","Oct28-Nov9,2020","Nov11-Nov23,2020","Nov25-Dec7,2020",
+           "Dec9-Dec21,2020")
 
 
 #Bind all Four Dataframes into 4 columns together
@@ -103,39 +107,24 @@ Covid_2020<-bind_rows(df,df2,df3,df4,df5,df6,df7,df8,df9,df10
                     df19,df20,df21)
 #Mutate and Filter Subgroups
 Covid_2020 %>%
-  filter(!is.na(Subgroups)) %>%
-  mutate(Subgroups= Subgroups)
-
-barplot(Covid_2020,                                         # Create stacked barchart
-        col = c("#1b98e0", "#353436"))
+  filter(!is.na(Percent)) %>%
+  mutate(Percent= Percent)
 
 
-
-fig1 <- ggplot(data = Covid_2020) +
-  geom_bar(mapping = aes(x= Percent), color = Subgroups)
-fig1 + labs(title = "Symptoms of Derpessive Disorder Report weekly from Apr to Dec 2020",
-            x = "Ages",
-            y = "Period",
-            caption = "(based on data from the CDC's National Center for Health Statistics)"
-) 
-
-fig1<-ggplot(data=Covid_2020,
-             mapping= aes(x=Period,y=Percent, color=Subgroups)) +
-  geom_point() + 
-  geom_smooth(method = lm, se= TRUE)
- theme(axis.text.x = element_text(angle = 45), legend.position="bottom"
-  fig1+labs (title = "Symptoms of Depressive Disorder Report weekly from Apr-Dec 2020",
-            x = "Ages of Adults 18-80+",
-            y = "Percent",
-            caption = "(based on data from CDC's National Center for Health Statistics)")
-           
-            
-fig2<-ggplot(Covid_2020, aes(x = Subgroups, y = Percent, fill= Period)) +    
-  geom_bar(stat = "identity")
-fig2+labs (title = "Symptoms of Depressive Disorder Report weekly from Apr-Dec 2020",
+fig2<-ggplot(Covid_2020, aes(x = Period, y = Percent, fill= Subgroups)) +  
+  geom_bar(stat= "identity")+
+  scale_x_discrete(label =c("Apr23-May5,2020","May7-May12,2020","May21-May26,2020",
+                                 "May28-Jun2,2020","Jun4-Jun9,2020","Jun11-Jun16,2020","Jun18-Jun23,2020","Jun25-Jun30,2020","Jul2-Jul7,2020",
+                                 "Jul9-Jul14,2020","Jul16-Jul21,2020","Aug19-Aug31,2020","Sep2-Sep14,2020","Sep16-Sep28,2020",
+                                 "Sep30-Oct12,2020","Oct14-Oct26,2020","Oct28-Nov9,2020","Nov11-Nov23,2020","Nov25-Dec7,2020",
+                                 "Dec9-Dec21,2020","Dec23-Dec30,2020"))  
+fig2+labs (title = "Symptoms of Depressive Disorder Report from Apr-Dec 2020",
            x = "Time Periods",
-           y = "Number of People Surveyed",
-           caption = "(based on the data from the CDC's National Center for Health Statistics)") + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+           y = "Number of Reports",
+           caption = "(based on the data from the CDC's National Center for Health Statistics)") +
+  theme(axis.text.x = element_text(angle = 70, hjust = 1))
+
+  
+
 
 

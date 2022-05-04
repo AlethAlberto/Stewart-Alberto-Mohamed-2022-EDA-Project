@@ -18,12 +18,12 @@ graph <- plot(poverty_data, type = "o", xlab="Year",ylab="Number of People",
 
 ggplot(data = poverty_data, 
        mapping = aes(x = year, y = ppl_in_poverty)) +
-  geom_line() + 
-  geom_point() +
+  geom_line(color= "blue", size=0.7) + 
+  geom_point(color= year, size=2.2) +
   labs(
     x = "Year",
     y = "Number of People",
     title = "Change in Poverty",
     subtitle = "US Census Data"
   )
- 
+
